@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MyPets</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <ion-app>
+        <ion-header>
+            <ion-toolbar class="new-colour">
+                <ion-title>
+                    <ion-label><ion-icon name="paw-outline"></ion-icon> MyPets</ion-label>
+                </ion-title>
+                <ion-buttons slot="end">
+                    <ion-button href="index.html">
+                        <ion-icon name="list-outline" slot="start"></ion-icon>
+                        <ion-label>View</ion-label>
+                    </ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
+
+        <ion-content>
+            <h2  class="ion-padding-start">New Pet</h2>
+            <ion-list>
+                <ion-item>
+                    <ion-input id="name" placeholder="Pet name (ex: Spencer)"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    
+                    <ion-select id="type" slot="start" placeholder="Select Pet Type">
+                        <ion-select-option value="Dog">Dog</ion-select-option>
+                        <ion-select-option value="Cat">Cat</ion-select-option>
+                        <ion-select-option value="Bird">Bird</ion-select-option>
+                        <ion-select-option value="Fish">Fish</ion-select-option>
+                        <ion-select-option value="Other">Other</ion-select-option>
+                    </ion-select>
+                      
+                </ion-item>
+
+                <ion-item>
+                    <ion-input id="birthday" placeholder="Birthday/Adoption Date dd/mm/yyyy"></ion-input>
+                </ion-item>
+
+                <ion-button id="saveButton" class="new-fab-colour ion-padding" expand="full">
+                    <ion-icon name="save-outline" slot="start"></ion-icon>
+                    <ion-label>Save Pet</ion-label>
+                </ion-button>
+            </ion-list>
+
+        </ion-content>
+
+        <script src="js/add.js"></script>
+    </ion-app>
+</body>
+
+</html>
