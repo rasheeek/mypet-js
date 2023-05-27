@@ -5,6 +5,7 @@ let clearBtn = document.querySelector("#clearBtn");
 clearBtn.addEventListener("click", clearPets)
 
 function loadPets() { 
+    console.log("running here");
     let allPets = JSON.parse(localStorage.getItem("allPets"));
     
     document.getElementById("pets").innerHTML = "";
@@ -25,7 +26,7 @@ function loadPets() {
         }
     }
     else {
-        document.getElementById("pets").innerHTML = '<h4 class="ion-text-center">You haven\'t added any pets yet. Please start by clicking on the + icon.</h4>';
+        document.getElementById("pets").innerHTML = '<h4 class="ion-text-center">You haven\'t added any pets yet.</h4>';
     }
 }
 
