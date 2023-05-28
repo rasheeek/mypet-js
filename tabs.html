@@ -20,16 +20,15 @@
     />
 
     <link rel="stylesheet" href="css/style.css" />
-
   </head>
 
   <body>
-   <ion-app>
-    <ion-tabs>
-      <ion-tab tab="home">
-        <ion-nav id="home-nav"></ion-nav>
-        <div id="home-page">
-          <!-- Home start -->
+    <ion-app>
+      <ion-tabs id="ionTab">
+        <ion-tab tab="home">
+          <ion-nav id="home-nav"></ion-nav>
+          <div id="home-page">
+            <!-- Home start -->
 
             <ion-header>
               <ion-toolbar class="new-colour">
@@ -50,7 +49,12 @@
             </ion-header>
 
             <ion-content>
-              <div id="pets" class="ion-padding"></div>
+              <div id="pets" class="ion-padding">
+                
+
+              </div>
+
+          
 
               <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
                     <ion-fab-button class="new-fab-colour"  href="add.html">
@@ -59,15 +63,14 @@
                 </ion-fab> -->
             </ion-content>
 
-          <!-- Home end -->
-        </div>
-      </ion-tab>
-      <ion-tab tab="add">
-        <ion-nav id="add-nav"></ion-nav>
-        <div id="add-page">
-          <!-- Add starst -->
+            <!-- Home end -->
+          </div>
+        </ion-tab>
+        <ion-tab tab="add">
+          <ion-nav id="add-nav"></ion-nav>
+          <div id="add-page">
+            <!-- Add starst -->
 
-   
             <ion-header>
               <ion-toolbar class="new-colour">
                 <ion-title>
@@ -96,7 +99,7 @@
 
                 <ion-item>
                   <ion-select
-                  interface="action-sheet"
+                    interface="action-sheet"
                     id="type"
                     slot="start"
                     placeholder="Select Pet Type"
@@ -116,6 +119,13 @@
                   ></ion-input>
                 </ion-item>
 
+                <ion-item>
+                  <ion-textarea
+                    id="medicalHistory"
+                    placeholder="Medical History"
+                  ></ion-textarea>
+                </ion-item>
+
                 <ion-button
                   id="saveButton"
                   class="new-fab-colour ion-padding"
@@ -126,36 +136,56 @@
                 </ion-button>
               </ion-list>
             </ion-content>
-    
 
-          <!-- Add end -->
-        </div>
-      </ion-tab>
-      <ion-tab tab="about">
-        <ion-nav id="about-nav"></ion-nav>
-        <div id="about-page">
-          <!-- About start -->
+            <!-- Add end -->
+          </div>
+        </ion-tab>
+        <ion-tab tab="about">
+          <ion-nav id="about-nav"></ion-nav>
+          <div id="about-page">
+            <!-- About start -->
 
-          <!-- About end -->
-        </div>
-      </ion-tab>
+            <ion-header>
+              <ion-toolbar class="new-colour">
+                <ion-title> About </ion-title>
+              </ion-toolbar>
+            </ion-header>
 
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="home">
-          <ion-icon name="menu"></ion-icon>
-          Pets
-        </ion-tab-button>
-        <ion-tab-button tab="add">
-          <ion-icon name="add-circle"></ion-icon>
-          Add New
-        </ion-tab-button>
-        <ion-tab-button tab="about">
-          <ion-icon name="information-circle"></ion-icon>
-          About
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
-   </ion-app>
+            <ion-content class="ion-padding">
+              <div class="center-div">
+                <ion-img style="max-width: 70%;" src="images/icon.png"></ion-img>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </ion-content>
+
+            <!-- About end -->
+          </div>
+        </ion-tab>
+
+        <ion-tab-bar slot="bottom">
+          <ion-tab-button tab="home">
+            <ion-icon name="menu"></ion-icon>
+            Pets
+          </ion-tab-button>
+          <ion-tab-button tab="add">
+            <ion-icon name="add-circle"></ion-icon>
+            Add New
+          </ion-tab-button>
+          <ion-tab-button tab="about">
+            <ion-icon name="information-circle"></ion-icon>
+            About
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+    </ion-app>
 
     <script>
       const homeNav = document.querySelector("#home-nav");
@@ -169,8 +199,6 @@
       const aboutNav = document.querySelector("#about-nav");
       const aboutPage = document.querySelector("#about-page");
       aboutNav.root = aboutPage;
-
-
     </script>
     <script src="js/list.js"></script>
     <script src="js/add.js"></script>

@@ -1,7 +1,7 @@
 let button = document.querySelector('#saveButton');
 button.addEventListener('click', handleButtonClick);
 
-function savePet(name, type, birthday) {
+function savePet(name, type, birthday, medicalHistory) {
     // Parse any JSON previously stored in allEntries
     let allPets = JSON.parse(localStorage.getItem("allPets"));
     if (allPets == null) 
@@ -11,17 +11,21 @@ function savePet(name, type, birthday) {
         "name": name,
         "type": type,
         "birthday": birthday,
+        "medicalHistory" : medicalHistory,
+        "createdDate" : new Date().toISOString()
     };
 
     allPets.push(pet);
     localStorage.setItem("allPets", JSON.stringify(allPets));
+    loadPets();
+    document.getElementById("ionTab").select("home");
 }
 
 function handleButtonClick() {
     const nameField = document.querySelector('#name');
-    
     const typeField = document.querySelector('#type');
     const birthdayField = document.querySelector('#birthday');
+    const medicalHistoryField = document.querySelector('#medicalHistory');
 
     let message, buttons = null
 
@@ -39,13 +43,13 @@ function handleButtonClick() {
             {
                 text: 'Ok',
                 handler: () => {
-                    savePet(nameField.value, typeField.value, birthdayField.value);
+                    savePet(nameField.value, typeField.value, birthdayField.value, medicalHistoryField.value);
                     
                     nameField.value = '';
                     typeField.value = '';
                     birthdayField.value = '';
+                    medicalHistoryField.value = '';
 
-                    window.location.href = "index.html";
                 }
             }
         ];
