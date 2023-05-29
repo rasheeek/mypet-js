@@ -1,8 +1,63 @@
 window.addEventListener("load", loadPets);
 window.addEventListener("load", updateCounter);
+const searchbar = document.querySelector("ion-searchbar");
+searchbar.addEventListener("ionInput", handleInput);
 
 let clearBtn = document.querySelector("#clearBtn");
 clearBtn.addEventListener("click", clearPets);
+
+function handleInput(event) {
+  const query = event.target.value.toLowerCase();
+
+  if (query.length == 0) {
+    loadPets();
+    console.log("empty");
+    return;
+  }
+  let allPets = JSON.parse(localStorage.getItem("allPets"));
+  results = allPets.filter((d) => d.name.toLowerCase().indexOf(query) > -1);
+  // filterItems(results);
+  let pets = "";
+  document.getElementById("pets").innerHTML = "";
+  results.forEach(addItems);
+  function addItems(item, index) {
+    const dateObj = new Date(item.createdDate);
+    const date = item.createdDate.split("T")[0];
+    const hour = item.createdDate.split("T")[1].split(":")[0];
+    const minute = item.createdDate.split("T")[1].split(":")[1];
+    pets += `
+         
+     
+            <ion-item class="pet-item" lines="full" >
+                <ion-icon slot="start" name="${getIcon(
+                  item.type
+                )}" > </ion-icon>
+                <ion-list>
+                    <h2>${item.name}</h2> 
+                    <ion-label  >Type : ${item.type}</ion-label>
+                    <ion-label>DOB : ${item.birthday}</ion-label>
+                    <ion-text>Created : ${date}  ${hour}:${minute}</ion-text><br/>
+                    <ion-text>Medical History : ${item.medicalHistory? item.medicalHistory : '-'}  </ion-text>
+                    <br/>
+                    <span>
+                    <ion-icon class="i-icon"  slot="end" name="add" ></ion-icon>
+                    <ion-icon class="i-icon" slot="end" name="eye" ></ion-icon>
+                    <ion-icon class="i-icon" onClick="test(${index})" slot="end" name="trash"  color="danger" ></ion-icon>
+                    </span>
+                </ion-list>
+               
+            </ion-item>
+           
+            `;
+  }
+  document.getElementById("pets").innerHTML = ` 
+   <ion-list>
+   ${pets}
+   </ion-list>
+    `;
+
+  console.log("Pets at end", pets);
+}
 
 function loadPets() {
   console.log("running here");
@@ -17,8 +72,8 @@ function loadPets() {
     function addItems(item, index) {
       const dateObj = new Date(item.createdDate);
       const date = item.createdDate.split("T")[0];
-      const hour = item.createdDate.split("T")[1].split(':')[0];
-      const minute = item.createdDate.split("T")[1].split(':')[1];
+      const hour = item.createdDate.split("T")[1].split(":")[0];
+      const minute = item.createdDate.split("T")[1].split(":")[1];
       pets += `
          
      
@@ -31,7 +86,9 @@ function loadPets() {
                     <h2>${item.name}</h2> 
                     <ion-label  >Type : ${item.type}</ion-label>
                     <ion-label>DOB : ${item.birthday}</ion-label>
-                    <ion-text>Created : ${date}  ${hour}:${minute}</ion-text>
+                    <ion-text>Created : ${date}  ${hour}:${minute}</ion-text><br/>
+                    <ion-text>Medical History : ${item.medicalHistory? item.medicalHistory : '-'}  </ion-text>
+                    <br/>
                     <span>
                     <ion-icon class="i-icon"  slot="end" name="add" ></ion-icon>
                     <ion-icon class="i-icon" slot="end" name="eye" ></ion-icon>
@@ -52,7 +109,7 @@ function loadPets() {
     `;
     const reorderGroup = document.querySelector("ion-reorder-group");
     reorderGroup.addEventListener("ionItemReorder", ({ detail }) => {
-        console.log('Dragged from index', detail.from, 'to', detail.to);
+      console.log("Dragged from index", detail.from, "to", detail.to);
       reOrder(detail.from, detail.to);
       detail.complete();
     });
@@ -64,7 +121,7 @@ function loadPets() {
 
 function reOrder(old_index, new_index) {
   let allPets = JSON.parse(localStorage.getItem("allPets"));
-  console.log("before",allPets);
+  console.log("before", allPets);
   if (new_index >= allPets.length) {
     var k = new_index - allPets.length + 1;
     while (k--) {
@@ -72,7 +129,7 @@ function reOrder(old_index, new_index) {
     }
   }
   allPets.splice(new_index, 0, allPets.splice(old_index, 1)[0]);
-  console.log("after",allPets);
+  console.log("after", allPets);
   localStorage.setItem("allPets", JSON.stringify(allPets));
 }
 
