@@ -21,9 +21,10 @@
     />
 
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/darkmode.css" />
   </head>
 
-  <body>
+  <body class="">
     <ion-app>
       <ion-tabs id="ionTab">
         <ion-tab tab="home">
@@ -41,18 +42,26 @@
                 >
 
                 <ion-buttons slot="end">
-                  <ion-button id="clearBtn">
+                  <ion-button color="primary" id="clearBtn">
                     <ion-icon name="trash-outline" slot="start"></ion-icon>
                     <ion-label>Clear</ion-label>
                   </ion-button>
                 </ion-buttons>
               </ion-toolbar>
+              <ion-item >
+                <ion-icon slot="start" name="moon"></ion-icon>
+                <ion-label>
+                  Toggle Dark Theme
+                </ion-label>
+                <ion-toggle id="themeToggle" slot="end"></ion-toggle>
+              </ion-item>
               <ion-toolbar>
                 <ion-searchbar></ion-searchbar>
               </ion-toolbar>
             </ion-header>
 
-            <ion-content>
+            <ion-content >
+     
               <div id="pets" class="ion-padding">
                 
 
@@ -211,5 +220,6 @@
     </script>
     <script src="js/list.js"></script>
     <script src="js/add.js"></script>
+    <script src="js/theme.js"></script>
   </body>
 </html>

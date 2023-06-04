@@ -1,7 +1,7 @@
-.new-colour {
+/* .new-colour {
     --background: white;
     color: #b98804;
-}
+} */
 
 .new-fab-colour {
     --background:#b98804;
@@ -40,4 +40,18 @@
     align-items: center;
     background-color: red;
     color: white;
+}
+.darkBg{
+    background-color: black !important;
+    background: black !important;
+    --background: black !important;
+    color: white !important;
+}
+
+body.dark {
+  /* Dark mode variables go here */
+   background-color: black !important;
+    background: black !important;
+    --background: black !important;
+    color: white !important;
 }
